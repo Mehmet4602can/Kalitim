@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,23 +38,32 @@ public class MainActivity extends AppCompatActivity {
                 iseGitSonuc.setText("Arabanız "+araba.getKapiSayisi()+" Kapılıdır ve "+araba.getMaksHiz()+"km/h hızla işe gitmektedir.");
             }
         });
-
+        Otobus otobus= new Otobus();
         yolcuBindir = findViewById(R.id.yolcuBindir);
         yolcuBindir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                otobus.setYolcuAl(Integer.parseInt(yolcuAl.getText().toString()));
+                Toast.makeText(MainActivity.this, ""+otobus.getYolcuAl(), Toast.LENGTH_SHORT).show();
             }
         });
+
 
         yolcuAt = findViewById(R.id.yolcuAt);
         yolcuAt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int inecekYolcuSayisi = Integer.parseInt(yolcuIndir.getText().toString());
+                if(otobus.yolcuSayisi >= inecekYolcuSayisi){
+                    otobus.setYolcuIndir(inecekYolcuSayisi);
+                    Toast.makeText(MainActivity.this, ""+otobus.yolcuSayisi, Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Otobüste o kadar inecek yok.", Toast.LENGTH_SHORT).show();
             }
+
         });
 
     }
+
 }

@@ -1,5 +1,7 @@
 package com.example.miraskalitim;
 
+import android.widget.Toast;
+
 public class Otobus extends Arac{
     int yolcuSayisi;
 
@@ -10,15 +12,16 @@ public class Otobus extends Arac{
     }
 
     public void setYolcuAl(int yolcuAl) {
-        this.yolcuAl = yolcuAl;
+        yolcuSayisi = yolcuAl+yolcuSayisi;
+        this.yolcuAl = yolcuSayisi;
     }
 
     public int getYolcuIndir() {
         return yolcuIndir;
     }
 
-    public void setYolcuIndir(int yolcuIndir) {
-        this.yolcuIndir = yolcuIndir;
+    public void setYolcuIndir(int inenYolcuSayisi) {
+            this.yolcuSayisi -= inenYolcuSayisi;
     }
 
     private int yolcuIndir;
